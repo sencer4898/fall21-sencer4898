@@ -1,5 +1,5 @@
 
-# Mehmet Ozer's Progress Journal for IE 582
+# **Mehmet Ozer's Progress Journal for IE 582**
 
 ## There will be X assignments throughout the year. These are the placeholders for these assignments.
 
