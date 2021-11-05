@@ -17,9 +17,14 @@ There will be a number of homeworks given for the course, for which descriptions
 
 ### Homework 1
 
-* [Homework 1 Instructions](https://bu-ie-582.github.io/fall21-sencer4898/files/IE582_Fall21_Homework_0.pdf)
+* [Homework 1 Instructions](https://bu-ie-582.github.io/fall21-sencer4898/files/IE582_Fall21_Homework1.pdf)
 
 * [Curse of Dimensionality and Data Manipulation on Images](https://bu-ie-582.github.io/fall21-sencer4898/files/HW1.html)
  
- 
+### Homework 2
+
+* [Homework 2 Instructions](https://bu-ie-582.github.io/fall21-sencer4898/files/IE582_Fall21_Homework2.pdf)
+* [Dimensionality Reduction, MDS with Turkey Map and PCA on Time series data](https://bu-ie-582.github.io/fall21-sencer4898/files/HW2.html)
+
+
  hehexd
