@@ -27,5 +27,11 @@ There will be a number of homeworks given for the course, for which descriptions
 
 * [Dimensionality Reduction, MDS with Turkey Map and PCA on Time series data](https://bu-ie-582.github.io/fall21-sencer4898/files/HW2.html)
 
+### Homework 3
+
+* [Homework 3 Instructions](https://bu-ie-582.github.io/fall21-sencer4898/files/IE582_Fall21_Homework3.pdf)
+
+* [Something Nice](https://bu-ie-582.github.io/fall21-sencer4898/files/HW2.html)
+
 
  hehexd
