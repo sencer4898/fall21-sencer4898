@@ -14256,10 +14256,49 @@ a.anchor-link {
     </script>
     <!-- End of mathjax configuration --></head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[178]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Increase the width of the notebook</span>
+
+<span class="kn">from</span> <span class="nn">IPython.core.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">HTML</span>
+<span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="s2">&quot;&lt;style&gt;.container { width:100% !important; }&lt;/style&gt;&quot;</span><span class="p">))</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<style>.container { width:100% !important; }</style>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># import required libraries</span>
@@ -14267,11 +14306,16 @@ a.anchor-link {
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+
 <span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="kn">import</span> <span class="n">KNeighborsClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+
 <span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">GridSearchCV</span>
 <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span>
-<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
 <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">log_loss</span><span class="p">,</span> <span class="n">make_scorer</span>
+<span class="kn">from</span> <span class="nn">scipy.spatial</span> <span class="kn">import</span> <span class="n">distance_matrix</span>
+
+<span class="kn">import</span> <span class="nn">time</span>
 </pre></div>
 
      </div>
@@ -14282,7 +14326,7 @@ a.anchor-link {
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[7]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[3]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Read Data for Train</span>
@@ -14316,10 +14360,10 @@ a.anchor-link {
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[21]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[4]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># concatenate the variables for train</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Concatenate the variables for train</span>
 <span class="n">concat_gesture_train</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">gesture_x_train</span><span class="p">,</span> <span class="n">gesture_y_train</span><span class="p">,</span> <span class="n">gesture_z_train</span><span class="p">],</span> <span class="n">join</span><span class="o">=</span><span class="s2">&quot;inner&quot;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">X_train</span> <span class="o">=</span> <span class="n">concat_gesture_train</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">&quot;class&quot;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">y_train</span> <span class="o">=</span> <span class="n">concat_gesture_train</span><span class="p">[</span><span class="s2">&quot;class&quot;</span><span class="p">]</span>
@@ -14339,7 +14383,7 @@ a.anchor-link {
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[21]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[4]:</div>
 
 
 
@@ -14521,7 +14565,7 @@ a.anchor-link {
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[4]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[5]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Read Data for Test</span>
@@ -14555,10 +14599,10 @@ a.anchor-link {
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[22]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[6]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># concatenate the variables for test</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Concatenate the variables for test</span>
 <span class="n">concat_gesture_test</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">gesture_x_test</span><span class="p">,</span> <span class="n">gesture_y_test</span><span class="p">,</span> <span class="n">gesture_z_test</span><span class="p">],</span> <span class="n">join</span><span class="o">=</span><span class="s2">&quot;inner&quot;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">X_test</span> <span class="o">=</span> <span class="n">concat_gesture_test</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">&quot;class&quot;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">y_test</span> <span class="o">=</span> <span class="n">concat_gesture_test</span><span class="p">[</span><span class="s2">&quot;class&quot;</span><span class="p">]</span>
@@ -14578,7 +14622,7 @@ a.anchor-link {
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[22]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[6]:</div>
 
 
 
@@ -14770,11 +14814,11 @@ a.anchor-link {
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[14]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[7]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Two distance measures will be used for the KNN:</span>
-<span class="c1"># Euclidean Distance, because it is the most used distance measure (default measure of the algorith)</span>
+<span class="c1"># Euclidean Distance, because it is the most used distance measure (default measure of the algorithm)</span>
 <span class="c1"># Manhattan Distance, because it is said to perform better on a high dimensional data.</span>
 </pre></div>
 
@@ -14786,11 +14830,11 @@ a.anchor-link {
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[34]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[8]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">knn_l1</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># n-jobs allows the computer to use all the processors.</span>
-<span class="n">knn_l2</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># n-jobs allows the computer to use all the processors.</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">knn_l1</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">knn_l2</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -14801,10 +14845,12 @@ a.anchor-link {
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[44]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[9]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">param_grid</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;n_neighbors&quot;</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">21</span><span class="p">,</span><span class="mi">1</span><span class="p">))}</span>
+
+<span class="c1"># n-jobs allows the computer to use all the processors simultaneously.</span>
 <span class="n">l1_cv_model</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">knn_l1</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">param_grid</span><span class="o">=</span> <span class="n">param_grid</span><span class="p">)</span>
 <span class="n">l2_cv_model</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">knn_l2</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">param_grid</span><span class="o">=</span> <span class="n">param_grid</span><span class="p">)</span>
 </pre></div>
@@ -14817,10 +14863,12 @@ a.anchor-link {
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[47]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[10]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">l1_cv_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">582</span><span class="p">)</span> <span class="c1"># For consistent results</span>
+
+<span class="n">l1_cv_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 <span class="n">l1_cv_model</span><span class="o">.</span><span class="n">best_params_</span>
 </pre></div>
 
@@ -14849,7 +14897,7 @@ a.anchor-link {
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[47]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[10]:</div>
 
 
 
@@ -14867,10 +14915,12 @@ a.anchor-link {
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[48]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[11]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">l2_cv_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">582</span><span class="p">)</span> <span class="c1"># For consistent results</span>
+
+<span class="n">l2_cv_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 <span class="n">l2_cv_model</span><span class="o">.</span><span class="n">best_params_</span>
 </pre></div>
 
@@ -14899,7 +14949,7 @@ a.anchor-link {
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[48]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[11]:</div>
 
 
 
@@ -14924,14 +14974,22 @@ a.anchor-link {
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h3 id="b)">b)<a class="anchor-link" href="#b)">&#182;</a></h3>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[73]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[12]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">y_pred_l1</span> <span class="o">=</span> <span class="n">l1_cv_model</span><span class="o">.</span><span class="n">best_estimator_</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Perform predictions on the test data with the tuned models and check the model runtimes.</span>
+<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">y_pred_l1</span> <span class="o">=</span> <span class="n">l1_cv_model</span><span class="o">.</span><span class="n">best_estimator_</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Runtime For KNN with L1-norm: </span><span class="si">{:.3f}</span><span class="s2"> seconds&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">end</span><span class="o">-</span><span class="n">start</span><span class="p">))</span>
+
+<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
 <span class="n">y_pred_l2</span> <span class="o">=</span> <span class="n">l2_cv_model</span><span class="o">.</span><span class="n">best_estimator_</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Runtime For KNN with L2-norm: </span><span class="si">{:.3f}</span><span class="s2"> seconds&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">end</span><span class="o">-</span><span class="n">start</span><span class="p">))</span>
 </pre></div>
 
      </div>
@@ -14939,14 +14997,36 @@ a.anchor-link {
 </div>
 </div>
 
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>Runtime For KNN with L1-norm: 3.340 seconds
+Runtime For KNN with L2-norm: 0.498 seconds
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[94]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[13]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">confusion_df_l1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;Actual&quot;</span><span class="p">:</span><span class="n">y_test</span><span class="p">,</span> <span class="s2">&quot;Predicted&quot;</span><span class="p">:</span><span class="n">y_pred_l1</span><span class="p">})</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Confusion Matrix For KNN with l1-norm and k=1&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Confusion Matrix For KNN with L1-norm and k=1&quot;</span><span class="p">)</span>
 <span class="n">c_matrix_l1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">confusion_df_l1</span><span class="p">[</span><span class="s2">&quot;Actual&quot;</span><span class="p">],</span> <span class="n">confusion_df_l1</span><span class="p">[</span><span class="s2">&quot;Predicted&quot;</span><span class="p">])</span>
 <span class="n">c_matrix_l1</span>
 </pre></div>
@@ -14968,7 +15048,7 @@ a.anchor-link {
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Confusion Matrix For KNN with l1-norm and k=1
+<pre>Confusion Matrix For KNN with L1-norm and k=1
 </pre>
 </div>
 </div>
@@ -14976,7 +15056,7 @@ a.anchor-link {
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[94]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[13]:</div>
 
 
 
@@ -15123,14 +15203,14 @@ a.anchor-link {
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[107]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[14]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">true_pred_l1</span><span class="o">=</span><span class="mi">0</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">8</span><span class="p">):</span>
     <span class="n">true_pred_l1</span><span class="o">+=</span> <span class="n">c_matrix_l1</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
 <span class="n">acc_score_l2</span> <span class="o">=</span> <span class="n">true_pred_l1</span><span class="o">/</span><span class="n">c_matrix_l1</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Accuracy Score for KNN with L1 Norm is:&quot;</span><span class="p">,</span> <span class="n">acc_score_l2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Accuracy Score for KNN with L1 Norm is: </span><span class="si">{:.3f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">acc_score_l2</span><span class="p">))</span>
 </pre></div>
 
      </div>
@@ -15150,7 +15230,7 @@ a.anchor-link {
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Accuracy Score for KNN with L1 Norm is: 0.954215522054718
+<pre>Accuracy Score for KNN with L1 Norm is: 0.954
 </pre>
 </div>
 </div>
@@ -15162,11 +15242,11 @@ a.anchor-link {
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[105]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[15]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">confusion_df_l2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;Actual&quot;</span><span class="p">:</span><span class="n">y_test</span><span class="p">,</span> <span class="s2">&quot;Predicted&quot;</span><span class="p">:</span><span class="n">y_pred_l2</span><span class="p">})</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Confusion Matrix For KNN with l2-norm and k=3&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Confusion Matrix For KNN with L2-norm and k=3&quot;</span><span class="p">)</span>
 <span class="n">c_matrix_l2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">confusion_df_l2</span><span class="p">[</span><span class="s2">&quot;Actual&quot;</span><span class="p">],</span> <span class="n">confusion_df_l2</span><span class="p">[</span><span class="s2">&quot;Predicted&quot;</span><span class="p">])</span>
 <span class="n">c_matrix_l2</span>
 </pre></div>
@@ -15188,7 +15268,7 @@ a.anchor-link {
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Confusion Matrix For KNN with l2-norm and k=3
+<pre>Confusion Matrix For KNN with L2-norm and k=3
 </pre>
 </div>
 </div>
@@ -15196,7 +15276,7 @@ a.anchor-link {
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[105]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[15]:</div>
 
 
 
@@ -15343,14 +15423,14 @@ a.anchor-link {
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[104]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[16]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">true_pred_l2</span><span class="o">=</span><span class="mi">0</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">8</span><span class="p">):</span>
     <span class="n">true_pred_l2</span><span class="o">+=</span> <span class="n">c_matrix_l2</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-<span class="n">acc_score_l2</span> <span class="o">=</span> <span class="n">true_pred</span><span class="o">/</span><span class="n">c_matrix_l2</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Accuracy Score for KNN with L2 Norm is:&quot;</span><span class="p">,</span> <span class="n">acc_score_l2</span><span class="p">)</span>
+<span class="n">acc_score_l2</span> <span class="o">=</span> <span class="n">true_pred_l2</span><span class="o">/</span><span class="n">c_matrix_l2</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Accuracy Score for KNN with L2 Norm is: </span><span class="si">{:.3f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">acc_score_l2</span><span class="p">))</span>
 </pre></div>
 
      </div>
@@ -15370,7 +15450,7 @@ a.anchor-link {
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Accuracy Score for KNN with L2 Norm is: 0.9438860971524288
+<pre>Accuracy Score for KNN with L2 Norm is: 0.944
 </pre>
 </div>
 </div>
@@ -15387,7 +15467,7 @@ a.anchor-link {
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="I-think-that-it-makes-more-sense-to-weight-x-and-y-axis-more-than-the-z-axis-because-gestures-are-defined-by-how-they-accelerate-at-these-axes-(Which-can-be-see-on-the-Figure-1-of-the-HW3-instructions).-Information-of-the-z-axis-is-more-like-an-extra-information-used-due-to-the-fact-that-people-do-not-present-gestures-perpendicular-to-their-devices.">I think that it makes more sense to weight x and y axis more than the z-axis because gestures are defined by how they accelerate at these axes (Which can be see on the Figure 1 of the HW3 instructions). Information of the z axis is more like an extra information used due to the fact that people do not present gestures perpendicular to their devices.<a class="anchor-link" href="#I-think-that-it-makes-more-sense-to-weight-x-and-y-axis-more-than-the-z-axis-because-gestures-are-defined-by-how-they-accelerate-at-these-axes-(Which-can-be-see-on-the-Figure-1-of-the-HW3-instructions).-Information-of-the-z-axis-is-more-like-an-extra-information-used-due-to-the-fact-that-people-do-not-present-gestures-perpendicular-to-their-devices.">&#182;</a></h3>
+<h3 id="I-think-that-it-makes-more-sense-to-weight-x-and-y-axis-more-than-the-z-axis-because-gestures-are-defined-by-how-they-accelerate-at-these-axes-(Which-can-be-see-on-the-Figure-1-of-the-HW3-instructions).-Information-of-the-z-axis-is-more-like-an-extra-information-used-due-to-the-fact-that-people-do-not-present-gestures-perfectly-perpendicular-to-their-devices.">I think that it makes more sense to weight x and y axis more than the z-axis because gestures are defined by how they accelerate at these axes (Which can be see on the Figure 1 of the HW3 instructions). Information of the z axis is more like an extra information used due to the fact that people do not present gestures perfectly perpendicular to their devices.<a class="anchor-link" href="#I-think-that-it-makes-more-sense-to-weight-x-and-y-axis-more-than-the-z-axis-because-gestures-are-defined-by-how-they-accelerate-at-these-axes-(Which-can-be-see-on-the-Figure-1-of-the-HW3-instructions).-Information-of-the-z-axis-is-more-like-an-extra-information-used-due-to-the-fact-that-people-do-not-present-gestures-perfectly-perpendicular-to-their-devices.">&#182;</a></h3>
 </div>
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
@@ -15397,7 +15477,7 @@ a.anchor-link {
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[119]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[17]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Convert targets to indicate if the class is 3 or not.</span>
@@ -15418,7 +15498,7 @@ a.anchor-link {
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[135]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[18]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Find the ratio of Class 3 instances in the training data</span>
@@ -15439,7 +15519,7 @@ a.anchor-link {
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[135]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[18]:</div>
 
 
 
@@ -15457,10 +15537,11 @@ a.anchor-link {
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[126]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[19]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">lr_model</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">100000</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Create Logistic Regression model with no penalization.</span>
+<span class="n">lr_model</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">100000</span><span class="p">,</span> <span class="n">penalty</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
 <span class="n">lr_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train_class3</span><span class="p">)</span>
 </pre></div>
 
@@ -15477,13 +15558,13 @@ a.anchor-link {
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[126]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[19]:</div>
 
 
 
 
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>LogisticRegression(max_iter=100000)</pre>
+<pre>LogisticRegression(max_iter=100000, penalty=&#39;none&#39;)</pre>
 </div>
 
 </div>
@@ -15495,10 +15576,11 @@ a.anchor-link {
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[146]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[20]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">y_pred_prob</span> <span class="o">=</span> <span class="n">lr_model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Get prediction probabilities of the test data and convert them to binary predictions by using the Class3 ratio as threshold.</span>
+<span class="n">y_pred_prob</span> <span class="o">=</span> <span class="n">lr_model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
 <span class="n">y_pred_lr</span> <span class="o">=</span> <span class="p">(</span><span class="n">y_pred_prob</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span><span class="o">&gt;</span><span class="n">ratio_class3</span><span class="p">)</span><span class="o">*</span><span class="mi">1</span>
 </pre></div>
 
@@ -15510,7 +15592,7 @@ a.anchor-link {
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[147]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[21]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">confusion_lr</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;Actual&quot;</span><span class="p">:</span><span class="n">y_test_class3</span><span class="p">,</span> <span class="s2">&quot;Predicted&quot;</span><span class="p">:</span><span class="n">y_pred_lr</span><span class="p">})</span>
@@ -15544,7 +15626,7 @@ a.anchor-link {
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[147]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[21]:</div>
 
 
 
@@ -15579,13 +15661,13 @@ a.anchor-link {
   <tbody>
     <tr>
       <th>0</th>
-      <td>2925</td>
-      <td>203</td>
+      <td>2953</td>
+      <td>175</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>95</td>
-      <td>359</td>
+      <td>165</td>
+      <td>289</td>
     </tr>
   </tbody>
 </table>
@@ -15598,10 +15680,49 @@ a.anchor-link {
 
 </div>
 
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[22]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Calculate the accuracy of the LR model</span>
+<span class="n">accuracy</span> <span class="o">=</span> <span class="p">(</span><span class="n">c_matrix_lr</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">c_matrix_lr</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span><span class="o">/</span><span class="p">(</span><span class="n">c_matrix_lr</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">c_matrix_lr</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">c_matrix_lr</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">c_matrix_lr</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">accuracy</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[22]:</div>
+
+
+
+
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
+<pre>0.9050809603573423</pre>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="Accuracy-is-(2925+359)/(2925+359+203+95)-=-0.917">Accuracy is (2925+359)/(2925+359+203+95) = 0.917<a class="anchor-link" href="#Accuracy-is-(2925+359)/(2925+359+203+95)-=-0.917">&#182;</a></h3>
+<h3 id="Accuracy-for-LR-with-no-penalty-is-0.905">Accuracy for LR with no penalty is 0.905<a class="anchor-link" href="#Accuracy-for-LR-with-no-penalty-is-0.905">&#182;</a></h3>
 </div>
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
@@ -15611,10 +15732,11 @@ a.anchor-link {
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[161]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[23]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">lr_lasso_model</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">100000</span><span class="p">,</span> <span class="n">penalty</span><span class="o">=</span><span class="s1">&#39;l1&#39;</span><span class="p">,</span> <span class="n">solver</span><span class="o">=</span><span class="s1">&#39;liblinear&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Create LR model with Lasso Penalty</span>
+<span class="n">lr_lasso_model</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">100000</span><span class="p">,</span> <span class="n">penalty</span><span class="o">=</span><span class="s1">&#39;l1&#39;</span><span class="p">,</span> <span class="n">solver</span><span class="o">=</span><span class="s1">&#39;liblinear&#39;</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -15625,13 +15747,13 @@ a.anchor-link {
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[179]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[24]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">param_grid</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;C&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.0001</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">]}</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Perform 10-fold Cross-Validation with the Binomial Deviance as the loss function</span>
+<span class="n">param_grid</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;C&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.0001</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">]}</span>
 <span class="n">LogLoss</span> <span class="o">=</span> <span class="n">make_scorer</span><span class="p">(</span><span class="n">log_loss</span><span class="p">,</span> <span class="n">greater_is_better</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">needs_proba</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">lr_lasso_cv_model</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">lr_lasso_model</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">param_grid</span><span class="o">=</span><span class="n">param_grid</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="n">LogLoss</span><span class="p">,</span>
-                                <span class="n">error_score</span><span class="o">=</span><span class="s1">&#39;raise&#39;</span><span class="p">)</span>
+<span class="n">lr_lasso_cv_model</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">lr_lasso_model</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">param_grid</span><span class="o">=</span><span class="n">param_grid</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="n">LogLoss</span><span class="p">)</span>
 <span class="n">lr_lasso_cv_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train_class3</span><span class="p">)</span>
 </pre></div>
 
@@ -15660,13 +15782,13 @@ a.anchor-link {
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[179]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[24]:</div>
 
 
 
 
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>GridSearchCV(cv=10, error_score=&#39;raise&#39;,
+<pre>GridSearchCV(cv=10,
              estimator=LogisticRegression(max_iter=100000, penalty=&#39;l1&#39;,
                                           solver=&#39;liblinear&#39;),
              n_jobs=-1,
@@ -15685,7 +15807,7 @@ a.anchor-link {
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[180]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[25]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">lr_lasso_cv_model</span><span class="o">.</span><span class="n">best_params_</span>
@@ -15704,7 +15826,7 @@ a.anchor-link {
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[180]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[25]:</div>
 
 
 
@@ -15727,10 +15849,12 @@ a.anchor-link {
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[183]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[26]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">lr_lasso_tuned</span> <span class="o">=</span> <span class="n">lr_lasso_cv_model</span><span class="o">.</span><span class="n">best_estimator_</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Get prediction probabilities of the test data and convert them to binary predictions by using the Class3 ratio as threshold.</span>
+
+<span class="n">lr_lasso_tuned</span> <span class="o">=</span> <span class="n">lr_lasso_cv_model</span><span class="o">.</span><span class="n">best_estimator_</span>
 <span class="n">y_pred_prob</span> <span class="o">=</span> <span class="n">lr_lasso_tuned</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
 <span class="n">y_pred_lr_lasso</span> <span class="o">=</span> <span class="p">(</span><span class="n">y_pred_prob</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span><span class="o">&gt;</span><span class="n">ratio_class3</span><span class="p">)</span><span class="o">*</span><span class="mi">1</span>
 </pre></div>
@@ -15743,7 +15867,7 @@ a.anchor-link {
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[189]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[27]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">confusion_lr_lasso</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;Actual&quot;</span><span class="p">:</span><span class="n">y_test_class3</span><span class="p">,</span> <span class="s2">&quot;Predicted&quot;</span><span class="p">:</span><span class="n">y_pred_lr_lasso</span><span class="p">})</span>
@@ -15777,7 +15901,7 @@ a.anchor-link {
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[189]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[27]:</div>
 
 
 
@@ -15812,13 +15936,13 @@ a.anchor-link {
   <tbody>
     <tr>
       <th>0</th>
-      <td>2873</td>
-      <td>255</td>
+      <td>2871</td>
+      <td>257</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>32</td>
-      <td>422</td>
+      <td>33</td>
+      <td>421</td>
     </tr>
   </tbody>
 </table>
@@ -15831,10 +15955,49 @@ a.anchor-link {
 
 </div>
 
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[28]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Calculate the accuracy score for the penalized LR</span>
+<span class="n">accuracy_lasso</span> <span class="o">=</span> <span class="p">(</span><span class="n">c_matrix_lr_lasso</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">c_matrix_lr_lasso</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span><span class="o">/</span><span class="p">(</span><span class="n">c_matrix_lr_lasso</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">c_matrix_lr_lasso</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">c_matrix_lr_lasso</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">c_matrix_lr_lasso</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">accuracy_lasso</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[28]:</div>
+
+
+
+
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
+<pre>0.9190396426577331</pre>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="Accuracy-is-(2873+422)/(2873+422+255+32)-=-0.92">Accuracy is (2873+422)/(2873+422+255+32) = 0.92<a class="anchor-link" href="#Accuracy-is-(2873+422)/(2873+422+255+32)-=-0.92">&#182;</a></h3>
+<h3 id="Accuracy-for-LR-with-L1-penalization-is-0.919">Accuracy for LR with L1 penalization is 0.919<a class="anchor-link" href="#Accuracy-for-LR-with-L1-penalization-is-0.919">&#182;</a></h3>
 </div>
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
@@ -15844,7 +16007,7 @@ a.anchor-link {
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[197]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[29]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Print the coefficients of the LR with Lasso penalty, ones that have positive values.</span>
@@ -15865,7 +16028,7 @@ a.anchor-link {
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[197]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[29]:</div>
 
 
 
@@ -15894,167 +16057,175 @@ a.anchor-link {
   <tbody>
     <tr>
       <th>xt127</th>
-      <td>0.043646</td>
+      <td>0.044427</td>
     </tr>
     <tr>
       <th>xt128</th>
-      <td>0.020288</td>
+      <td>0.014068</td>
     </tr>
     <tr>
       <th>xt208</th>
-      <td>0.087571</td>
+      <td>0.091109</td>
     </tr>
     <tr>
       <th>xt235</th>
-      <td>0.118792</td>
+      <td>0.131123</td>
     </tr>
     <tr>
       <th>xt236</th>
-      <td>0.279351</td>
+      <td>0.334157</td>
     </tr>
     <tr>
       <th>xt237</th>
-      <td>0.373758</td>
+      <td>0.277880</td>
     </tr>
     <tr>
       <th>xt238</th>
-      <td>0.160198</td>
+      <td>0.192760</td>
     </tr>
     <tr>
       <th>xt248</th>
-      <td>0.076753</td>
+      <td>0.083842</td>
     </tr>
     <tr>
       <th>xt249</th>
-      <td>0.151164</td>
+      <td>0.146576</td>
     </tr>
     <tr>
       <th>xt258</th>
-      <td>0.399740</td>
+      <td>0.373261</td>
     </tr>
     <tr>
       <th>xt259</th>
-      <td>0.154430</td>
+      <td>0.186569</td>
     </tr>
     <tr>
       <th>xt281</th>
-      <td>0.138705</td>
+      <td>0.130686</td>
     </tr>
     <tr>
       <th>xt282</th>
-      <td>0.486561</td>
+      <td>0.278306</td>
     </tr>
     <tr>
-      <th>xt286</th>
-      <td>0.046636</td>
-    </tr>
-    <tr>
-      <th>xt287</th>
-      <td>0.086346</td>
+      <th>xt284</th>
+      <td>0.378592</td>
     </tr>
     <tr>
       <th>xt288</th>
-      <td>0.072497</td>
+      <td>0.045895</td>
     </tr>
     <tr>
       <th>xt289</th>
-      <td>0.100625</td>
+      <td>0.079530</td>
     </tr>
     <tr>
       <th>xt290</th>
-      <td>0.130032</td>
+      <td>0.144078</td>
+    </tr>
+    <tr>
+      <th>xt291</th>
+      <td>0.009469</td>
     </tr>
     <tr>
       <th>xt292</th>
-      <td>0.065540</td>
+      <td>0.018779</td>
     </tr>
     <tr>
       <th>xt293</th>
-      <td>0.063202</td>
+      <td>0.032158</td>
     </tr>
     <tr>
       <th>xt294</th>
-      <td>0.021626</td>
+      <td>0.026550</td>
     </tr>
     <tr>
       <th>xt295</th>
-      <td>0.034831</td>
+      <td>0.101103</td>
     </tr>
     <tr>
       <th>xt315</th>
-      <td>0.560191</td>
+      <td>0.557613</td>
     </tr>
     <tr>
       <th>yt160</th>
-      <td>0.091325</td>
+      <td>0.002169</td>
+    </tr>
+    <tr>
+      <th>yt161</th>
+      <td>0.095397</td>
     </tr>
     <tr>
       <th>yt165</th>
-      <td>0.376841</td>
+      <td>0.346576</td>
     </tr>
     <tr>
       <th>yt166</th>
-      <td>0.825702</td>
+      <td>0.846108</td>
     </tr>
     <tr>
       <th>yt191</th>
-      <td>0.031495</td>
+      <td>0.026893</td>
     </tr>
     <tr>
       <th>yt192</th>
-      <td>0.489678</td>
+      <td>0.497691</td>
+    </tr>
+    <tr>
+      <th>yt226</th>
+      <td>0.001200</td>
     </tr>
     <tr>
       <th>yt227</th>
-      <td>0.087746</td>
+      <td>0.084559</td>
     </tr>
     <tr>
       <th>yt228</th>
-      <td>0.102758</td>
+      <td>0.107472</td>
     </tr>
     <tr>
       <th>yt229</th>
-      <td>0.113664</td>
+      <td>0.066208</td>
     </tr>
     <tr>
       <th>yt230</th>
-      <td>0.103350</td>
+      <td>0.104379</td>
     </tr>
     <tr>
       <th>yt231</th>
-      <td>0.013774</td>
+      <td>0.052968</td>
     </tr>
     <tr>
       <th>zt87</th>
-      <td>0.001054</td>
+      <td>0.000653</td>
     </tr>
     <tr>
       <th>zt88</th>
-      <td>0.036045</td>
+      <td>0.046737</td>
     </tr>
     <tr>
       <th>zt89</th>
-      <td>0.053828</td>
+      <td>0.036790</td>
     </tr>
     <tr>
       <th>zt98</th>
-      <td>0.082763</td>
+      <td>0.107679</td>
     </tr>
     <tr>
       <th>zt99</th>
-      <td>0.234136</td>
+      <td>0.214577</td>
     </tr>
     <tr>
       <th>zt100</th>
-      <td>0.023146</td>
+      <td>0.054577</td>
     </tr>
     <tr>
       <th>zt101</th>
-      <td>0.043003</td>
+      <td>0.010489</td>
     </tr>
     <tr>
       <th>zt315</th>
-      <td>0.113765</td>
+      <td>0.112310</td>
     </tr>
   </tbody>
 </table>
@@ -16070,7 +16241,7 @@ a.anchor-link {
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="We-see-that-nearly-half-of-the-significant-features-are-from-the-x-axis.-It-makes-sense-because-if-we-look-at-the-shape-of-the-class-3-gesture,-it-is-a-straight-line-from-left-to-right.-Therefore,-we-mostly-need-x-axis-coordinate-to-define-it.-Also,-another-interesting-thing-is-that-initial-timepoints-are-not-significant-(s.t.-xt127,-yt160-and-zt87-are-the-earliest-timepoints-for-the-respective-axes)-at-determining-if-a-gesture-belongs-to-class-3.-We-need-y-values-from-t=160-to-t=231.-In-my-opinion,-it-is-because-if-there-is-no-vertical-movement-in-the-middle-of-the-gesture,-it-is-more-likely-that-the-gesture-is-performed-on-the-horizontal-line-(Class-3-or-Class-4)-and-thus-narrows-the-choice-of-the-gestures.">We see that nearly half of the significant features are from the x-axis. It makes sense because if we look at the shape of the class 3 gesture, it is a straight line from left to right. Therefore, we mostly need x-axis coordinate to define it. Also, another interesting thing is that initial timepoints are not significant (s.t. xt127, yt160 and zt87 are the earliest timepoints for the respective axes) at determining if a gesture belongs to class 3. We need y values from t=160 to t=231. In my opinion, it is because if there is no vertical movement in the middle of the gesture, it is more likely that the gesture is performed on the horizontal line (Class 3 or Class 4) and thus narrows the choice of the gestures.<a class="anchor-link" href="#We-see-that-nearly-half-of-the-significant-features-are-from-the-x-axis.-It-makes-sense-because-if-we-look-at-the-shape-of-the-class-3-gesture,-it-is-a-straight-line-from-left-to-right.-Therefore,-we-mostly-need-x-axis-coordinate-to-define-it.-Also,-another-interesting-thing-is-that-initial-timepoints-are-not-significant-(s.t.-xt127,-yt160-and-zt87-are-the-earliest-timepoints-for-the-respective-axes)-at-determining-if-a-gesture-belongs-to-class-3.-We-need-y-values-from-t=160-to-t=231.-In-my-opinion,-it-is-because-if-there-is-no-vertical-movement-in-the-middle-of-the-gesture,-it-is-more-likely-that-the-gesture-is-performed-on-the-horizontal-line-(Class-3-or-Class-4)-and-thus-narrows-the-choice-of-the-gestures.">&#182;</a></h3>
+<h3 id="We-see-that-nearly-half-of-the-significant-features-are-from-the-x-axis.-It-makes-sense-because-if-we-look-at-the-shape-of-the-Class-3-gesture,-it-is-a-straight-line-from-left-to-right.-Therefore,-we-mostly-need-x-axis-coordinate-to-define-it.-Also,-another-interesting-thing-is-that-initial-timepoints-are-not-significant-(s.t.-xt127,-yt160-and-zt87-are-the-earliest-timepoints-for-the-respective-axes)-at-determining-if-a-gesture-belongs-to-class-3.-We-need-y-values-from-t=160-to-t=231.-In-my-opinion,-it-is-because-if-there-is-no-vertical-movement-in-the-middle-of-the-gesture,-it-is-more-likely-that-the-gesture-is-performed-on-the-horizontal-line-(Class-3-or-Class-4)-and-thus,-it-narrows-down-the-choice-of-the-gestures.">We see that nearly half of the significant features are from the x-axis. It makes sense because if we look at the shape of the Class 3 gesture, it is a straight line from left to right. Therefore, we mostly need x-axis coordinate to define it. Also, another interesting thing is that initial timepoints are not significant (s.t. xt127, yt160 and zt87 are the earliest timepoints for the respective axes) at determining if a gesture belongs to class 3. We need y values from t=160 to t=231. In my opinion, it is because if there is no vertical movement in the middle of the gesture, it is more likely that the gesture is performed on the horizontal line (Class 3 or Class 4) and thus, it narrows down the choice of the gestures.<a class="anchor-link" href="#We-see-that-nearly-half-of-the-significant-features-are-from-the-x-axis.-It-makes-sense-because-if-we-look-at-the-shape-of-the-Class-3-gesture,-it-is-a-straight-line-from-left-to-right.-Therefore,-we-mostly-need-x-axis-coordinate-to-define-it.-Also,-another-interesting-thing-is-that-initial-timepoints-are-not-significant-(s.t.-xt127,-yt160-and-zt87-are-the-earliest-timepoints-for-the-respective-axes)-at-determining-if-a-gesture-belongs-to-class-3.-We-need-y-values-from-t=160-to-t=231.-In-my-opinion,-it-is-because-if-there-is-no-vertical-movement-in-the-middle-of-the-gesture,-it-is-more-likely-that-the-gesture-is-performed-on-the-horizontal-line-(Class-3-or-Class-4)-and-thus,-it-narrows-down-the-choice-of-the-gestures.">&#182;</a></h3>
 </div>
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
@@ -16080,10 +16251,12 @@ a.anchor-link {
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[30]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span> 
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Create copies of original datasets</span>
+<span class="n">X_train_copy</span> <span class="o">=</span> <span class="n">X_train</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">X_test_copy</span> <span class="o">=</span> <span class="n">X_test</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 </pre></div>
 
      </div>
@@ -16091,6 +16264,418 @@ a.anchor-link {
 </div>
 </div>
 
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[31]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">X_train_copy</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[31]:</div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>xt1</th>
+      <th>xt2</th>
+      <th>xt3</th>
+      <th>xt4</th>
+      <th>xt5</th>
+      <th>xt6</th>
+      <th>xt7</th>
+      <th>xt8</th>
+      <th>xt9</th>
+      <th>xt10</th>
+      <th>...</th>
+      <th>zt306</th>
+      <th>zt307</th>
+      <th>zt308</th>
+      <th>zt309</th>
+      <th>zt310</th>
+      <th>zt311</th>
+      <th>zt312</th>
+      <th>zt313</th>
+      <th>zt314</th>
+      <th>zt315</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-0.304243</td>
+      <td>-0.304243</td>
+      <td>-0.304243</td>
+      <td>-0.304243</td>
+      <td>-0.304243</td>
+      <td>-0.304243</td>
+      <td>-0.304243</td>
+      <td>-0.304243</td>
+      <td>-0.304243</td>
+      <td>-0.304243</td>
+      <td>...</td>
+      <td>0.523217</td>
+      <td>0.513994</td>
+      <td>0.503481</td>
+      <td>0.492967</td>
+      <td>0.474522</td>
+      <td>0.456077</td>
+      <td>0.437632</td>
+      <td>0.419187</td>
+      <td>0.400743</td>
+      <td>0.382298</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1.627311</td>
+      <td>1.627311</td>
+      <td>1.627311</td>
+      <td>1.627311</td>
+      <td>1.627311</td>
+      <td>1.627311</td>
+      <td>1.627311</td>
+      <td>1.627311</td>
+      <td>1.627311</td>
+      <td>1.627311</td>
+      <td>...</td>
+      <td>-0.427010</td>
+      <td>-0.427010</td>
+      <td>-0.427010</td>
+      <td>-0.427172</td>
+      <td>-0.428773</td>
+      <td>-0.440720</td>
+      <td>-0.452667</td>
+      <td>-0.464613</td>
+      <td>-0.476560</td>
+      <td>-0.488507</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.661277</td>
+      <td>0.661277</td>
+      <td>0.661277</td>
+      <td>0.661277</td>
+      <td>0.661277</td>
+      <td>0.661277</td>
+      <td>0.661277</td>
+      <td>0.661277</td>
+      <td>0.661277</td>
+      <td>0.661277</td>
+      <td>...</td>
+      <td>-0.862717</td>
+      <td>-0.862717</td>
+      <td>-0.862717</td>
+      <td>-0.862717</td>
+      <td>-0.862717</td>
+      <td>-0.862717</td>
+      <td>-0.862717</td>
+      <td>-0.862717</td>
+      <td>-0.862717</td>
+      <td>-0.862717</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.005185</td>
+      <td>0.005185</td>
+      <td>0.005185</td>
+      <td>0.005185</td>
+      <td>0.005185</td>
+      <td>0.005185</td>
+      <td>0.005185</td>
+      <td>0.005185</td>
+      <td>0.005185</td>
+      <td>0.005185</td>
+      <td>...</td>
+      <td>-0.187384</td>
+      <td>-0.123549</td>
+      <td>-0.055870</td>
+      <td>0.011808</td>
+      <td>0.079487</td>
+      <td>0.157056</td>
+      <td>0.253740</td>
+      <td>0.445503</td>
+      <td>0.648538</td>
+      <td>0.851573</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1.286198</td>
+      <td>1.286198</td>
+      <td>1.286198</td>
+      <td>1.286198</td>
+      <td>1.286198</td>
+      <td>1.286198</td>
+      <td>1.286198</td>
+      <td>1.286198</td>
+      <td>1.286198</td>
+      <td>1.286198</td>
+      <td>...</td>
+      <td>1.867473</td>
+      <td>1.834319</td>
+      <td>1.756000</td>
+      <td>1.638582</td>
+      <td>1.521164</td>
+      <td>1.453266</td>
+      <td>1.515219</td>
+      <td>1.632637</td>
+      <td>1.750054</td>
+      <td>1.867473</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 945 columns</p>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Create Distance Matrices</span>
+
+<span class="n">X_train_dist</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">distance_matrix</span><span class="p">(</span><span class="n">X_train_copy</span><span class="p">,</span> <span class="n">X_train_copy</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">X_test_dist</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">distance_matrix</span><span class="p">(</span><span class="n">X_test_copy</span><span class="p">,</span> <span class="n">X_train_copy</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">X_test_dist</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Create LR model with Lasso Penalty</span>
+<span class="n">lr_lasso_dist_model</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">100000</span><span class="p">,</span> <span class="n">penalty</span><span class="o">=</span><span class="s1">&#39;l1&#39;</span><span class="p">,</span> <span class="n">solver</span><span class="o">=</span><span class="s1">&#39;liblinear&#39;</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 10-fold Cross-Validation with distance matrix as input and Binomial Deviance as the loss function</span>
+
+<span class="n">param_grid</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;C&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.0001</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">]}</span>
+<span class="n">LogLoss</span> <span class="o">=</span> <span class="n">make_scorer</span><span class="p">(</span><span class="n">log_loss</span><span class="p">,</span> <span class="n">greater_is_better</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">needs_proba</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">lr_lasso_dist_cv_model</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">lr_lasso_dist_model</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">param_grid</span><span class="o">=</span><span class="n">param_grid</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="n">LogLoss</span><span class="p">)</span>
+<span class="n">lr_lasso_dist_cv_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_dist</span><span class="p">,</span> <span class="n">y_train_class3</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">lr_lasso_dist_cv_model</span><span class="o">.</span><span class="n">best_params_</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="We-find-that-best-C-value-is-5-.-It-is-defined-as-'Inverse-of-Regularization-Strength',-therefore-lambda=-1/2-is-our-parameter.">We find that best C value is 5 . It is defined as 'Inverse of Regularization Strength', therefore lambda= 1/2 is our parameter.<a class="anchor-link" href="#We-find-that-best-C-value-is-5-.-It-is-defined-as-'Inverse-of-Regularization-Strength',-therefore-lambda=-1/2-is-our-parameter.">&#182;</a></h3>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Get prediction probabilities of the test data and convert them to binary predictions by using the Class3 ratio as threshold.</span>
+
+<span class="n">lr_lasso_dist_tuned</span> <span class="o">=</span> <span class="n">lr_lasso_dist_cv_model</span><span class="o">.</span><span class="n">best_estimator_</span>
+<span class="n">y_pred_prob_dist</span> <span class="o">=</span> <span class="n">lr_lasso_dist_tuned</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test_dist</span><span class="p">)</span>
+<span class="n">y_pred_lr_lasso_dist</span> <span class="o">=</span> <span class="p">(</span><span class="n">y_pred_prob_dist</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span><span class="o">&gt;</span><span class="n">ratio_class3</span><span class="p">)</span><span class="o">*</span><span class="mi">1</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">confusion_lr_lasso_dist</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;Actual&quot;</span><span class="p">:</span><span class="n">y_test_class3</span><span class="p">,</span> <span class="s2">&quot;Predicted&quot;</span><span class="p">:</span><span class="n">y_pred_lr_lasso_dist</span><span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Confusion Matrix For Logistic Regression w/Lasso on Class3&quot;</span><span class="p">)</span>
+<span class="n">c_matrix_lr_lasso_dist</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">confusion_lr_lasso_dist</span><span class="p">[</span><span class="s2">&quot;Actual&quot;</span><span class="p">],</span> <span class="n">confusion_lr_lasso_dist</span><span class="p">[</span><span class="s2">&quot;Predicted&quot;</span><span class="p">])</span>
+<span class="n">c_matrix_lr_lasso_dist</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Calculate the accuracy for the LR with distance as input</span>
+<span class="n">accuracy_dist</span> <span class="o">=</span> <span class="p">(</span><span class="n">c_matrix_lr_lasso_dist</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">c_matrix_lr_lasso_dist</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span><span class="o">/</span><span class="p">(</span><span class="n">c_matrix_lr_lasso_dist</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">c_matrix_lr_lasso_dist</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">c_matrix_lr_lasso_dist</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">c_matrix_lr_lasso_dist</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">accuracy_dist</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Accuracy-for-the-LR-with-distance-matrix-as-input-and-L1-penalization-is-0.9855">Accuracy for the LR with distance matrix as input and L1 penalization is 0.9855<a class="anchor-link" href="#Accuracy-for-the-LR-with-distance-matrix-as-input-and-L1-penalization-is-0.9855">&#182;</a></h3>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Print the coefficients of the LR with Lasso penalty, ones that have positive values.</span>
+<span class="n">lr_lasso_dist_coefs</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;Coef&quot;</span><span class="p">:</span><span class="n">lr_lasso_dist_tuned</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">0</span><span class="p">]},</span> <span class="n">index</span><span class="o">=</span><span class="n">X_train_dist</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+<span class="n">lr_lasso_dist_coefs</span><span class="p">[</span><span class="n">lr_lasso_dist_coefs</span><span class="p">[</span><span class="s2">&quot;Coef&quot;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Regression-coefficients-are-the-scalers-for-the-distances-between-the-test-instance-and-the-corresponding-training-instances.-For-example,-if-we-choose-a-point-from-the-test-data-that-belongs-to-the-class-3-(such-as-the-12th-point),-and-multiply-its-distances-(from-the-training-data-instances)-with-regression-coefficients,-sum-these-multiplications-and-transform-the-result-with-the-logit-function,-we-should-get-a-probability-that-is-close-to-1,-because-class-3-is-our-target-class-(and-model-has-an-almost-perfect-accuracy).">Regression coefficients are the scalers for the distances between the test instance and the corresponding training instances. For example, if we choose a point from the test data that belongs to the class 3 (such as the 12th point), and multiply its distances (from the training data instances) with regression coefficients, sum these multiplications and transform the result with the logit function, we should get a probability that is close to 1, because class 3 is our target class (and model has an almost perfect accuracy).<a class="anchor-link" href="#Regression-coefficients-are-the-scalers-for-the-distances-between-the-test-instance-and-the-corresponding-training-instances.-For-example,-if-we-choose-a-point-from-the-test-data-that-belongs-to-the-class-3-(such-as-the-12th-point),-and-multiply-its-distances-(from-the-training-data-instances)-with-regression-coefficients,-sum-these-multiplications-and-transform-the-result-with-the-logit-function,-we-should-get-a-probability-that-is-close-to-1,-because-class-3-is-our-target-class-(and-model-has-an-almost-perfect-accuracy).">&#182;</a></h3>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Test points that belongs to class 3. (We pick the 12th point for demonstration)</span>
+<span class="p">(</span><span class="n">y_test</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">y_test</span><span class="o">==</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">dropna</span><span class="p">())[:</span><span class="mi">10</span><span class="p">]</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="n">lr_lasso_dist_coefs</span><span class="p">[</span><span class="s2">&quot;Coef&quot;</span><span class="p">]</span><span class="o">*</span><span class="n">X_test_dist</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">12</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">e</span><span class="o">**-</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h5 id="As-we-see,-the-resulting-probability-is-0.974.">As we see, the resulting probability is 0.974.<a class="anchor-link" href="#As-we-see,-the-resulting-probability-is-0.974.">&#182;</a></h5>
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="d)-Comparisons-of-the-Models">d) Comparisons of the Models<a class="anchor-link" href="#d)-Comparisons-of-the-Models">&#182;</a></h3>
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h4 id="Accuracy-Score-for-KNN-with-L1-Norm-is:-0.954">Accuracy Score for KNN with L1 Norm is: 0.954<a class="anchor-link" href="#Accuracy-Score-for-KNN-with-L1-Norm-is:-0.954">&#182;</a></h4><h4 id="Accuracy-Score-for-KNN-with-L2-Norm-is:-0.944">Accuracy Score for KNN with L2 Norm is: 0.944<a class="anchor-link" href="#Accuracy-Score-for-KNN-with-L2-Norm-is:-0.944">&#182;</a></h4><h4 id="Accuracy-for-LR-with-no-penalty-is-0.905">Accuracy for LR with no penalty is 0.905<a class="anchor-link" href="#Accuracy-for-LR-with-no-penalty-is-0.905">&#182;</a></h4><h4 id="Accuracy-for-LR-with-L1-penalization-is-0.919">Accuracy for LR with L1 penalization is 0.919<a class="anchor-link" href="#Accuracy-for-LR-with-L1-penalization-is-0.919">&#182;</a></h4><h4 id="Accuracy-for-the-LR-with-distance-matrix-as-input-and-L1-penalization-is-0.9855">Accuracy for the LR with distance matrix as input and L1 penalization is 0.9855<a class="anchor-link" href="#Accuracy-for-the-LR-with-distance-matrix-as-input-and-L1-penalization-is-0.9855">&#182;</a></h4>
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="As-we-see,-KNN-models-outperformed-the-Logistic-Regression-models-by-default.-This-is-due-to-the-relation-between-the-inputs-and-output-of-the-data,-which-is-nonlinear,-and-KNN-algorithm-is-a-distance-based-algorithm-and-can-catch-these-types-of-relations.-However,-when-we-introduce-nonlinearity-to-the-Logistic-Regression-with-the-distance-matrix-as-an-input,-it's-performance-drastically-increased-to-almost-1,-which-is-better-than-the-both-KNN-models.">As we see, KNN models outperformed the Logistic Regression models by default. This is due to the relation between the inputs and output of the data, which is nonlinear, and KNN algorithm is a distance-based algorithm and can catch these types of relations. However, when we introduce nonlinearity to the Logistic Regression with the distance matrix as an input, it's performance drastically increased to almost 1, which is better than the both KNN models.<a class="anchor-link" href="#As-we-see,-KNN-models-outperformed-the-Logistic-Regression-models-by-default.-This-is-due-to-the-relation-between-the-inputs-and-output-of-the-data,-which-is-nonlinear,-and-KNN-algorithm-is-a-distance-based-algorithm-and-can-catch-these-types-of-relations.-However,-when-we-introduce-nonlinearity-to-the-Logistic-Regression-with-the-distance-matrix-as-an-input,-it's-performance-drastically-increased-to-almost-1,-which-is-better-than-the-both-KNN-models.">&#182;</a></h3>
+</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
