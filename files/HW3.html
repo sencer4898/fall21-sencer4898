@@ -15009,8 +15009,8 @@ a.anchor-link {
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Runtime For KNN with L1-norm: 3.340 seconds
-Runtime For KNN with L2-norm: 0.498 seconds
+<pre>Runtime For KNN with L1-norm: 3.308 seconds
+Runtime For KNN with L2-norm: 0.513 seconds
 </pre>
 </div>
 </div>
@@ -16468,7 +16468,7 @@ Runtime For KNN with L2-norm: 0.498 seconds
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[32]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Create Distance Matrices</span>
@@ -16482,10 +16482,10 @@ Runtime For KNN with L2-norm: 0.498 seconds
 </div>
 </div>
 
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[33]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">X_test_dist</span>
@@ -16496,10 +16496,341 @@ Runtime For KNN with L2-norm: 0.498 seconds
 </div>
 </div>
 
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[33]:</div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+      <th>6</th>
+      <th>7</th>
+      <th>8</th>
+      <th>9</th>
+      <th>...</th>
+      <th>886</th>
+      <th>887</th>
+      <th>888</th>
+      <th>889</th>
+      <th>890</th>
+      <th>891</th>
+      <th>892</th>
+      <th>893</th>
+      <th>894</th>
+      <th>895</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>51.687559</td>
+      <td>13.263419</td>
+      <td>28.321555</td>
+      <td>39.541255</td>
+      <td>34.286788</td>
+      <td>38.211025</td>
+      <td>36.045863</td>
+      <td>48.764229</td>
+      <td>37.568076</td>
+      <td>59.428712</td>
+      <td>...</td>
+      <td>44.366890</td>
+      <td>49.494730</td>
+      <td>32.777330</td>
+      <td>51.240891</td>
+      <td>35.257192</td>
+      <td>43.642435</td>
+      <td>51.738237</td>
+      <td>41.011374</td>
+      <td>41.870528</td>
+      <td>28.349480</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>34.947350</td>
+      <td>54.334337</td>
+      <td>54.694516</td>
+      <td>46.732487</td>
+      <td>45.800128</td>
+      <td>46.545913</td>
+      <td>41.582900</td>
+      <td>37.517528</td>
+      <td>46.173264</td>
+      <td>31.870273</td>
+      <td>...</td>
+      <td>37.760887</td>
+      <td>42.294340</td>
+      <td>44.207834</td>
+      <td>38.800478</td>
+      <td>50.753346</td>
+      <td>42.983088</td>
+      <td>38.362504</td>
+      <td>44.871331</td>
+      <td>37.517618</td>
+      <td>55.648530</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>42.171916</td>
+      <td>25.570757</td>
+      <td>35.860929</td>
+      <td>42.167440</td>
+      <td>28.760080</td>
+      <td>37.984422</td>
+      <td>41.091221</td>
+      <td>44.311017</td>
+      <td>31.095472</td>
+      <td>50.164764</td>
+      <td>...</td>
+      <td>46.952663</td>
+      <td>50.504509</td>
+      <td>30.280558</td>
+      <td>39.453718</td>
+      <td>45.695170</td>
+      <td>47.538985</td>
+      <td>50.386797</td>
+      <td>40.439901</td>
+      <td>43.688492</td>
+      <td>35.511051</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>41.876963</td>
+      <td>34.269027</td>
+      <td>41.884193</td>
+      <td>44.840555</td>
+      <td>25.517543</td>
+      <td>43.336345</td>
+      <td>38.773427</td>
+      <td>38.422948</td>
+      <td>20.204116</td>
+      <td>50.381287</td>
+      <td>...</td>
+      <td>45.197983</td>
+      <td>53.934857</td>
+      <td>28.368976</td>
+      <td>42.632988</td>
+      <td>48.775380</td>
+      <td>49.697657</td>
+      <td>44.197285</td>
+      <td>42.866915</td>
+      <td>42.667953</td>
+      <td>41.614170</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>49.642237</td>
+      <td>14.399477</td>
+      <td>16.490769</td>
+      <td>41.308488</td>
+      <td>32.737889</td>
+      <td>37.112181</td>
+      <td>44.964582</td>
+      <td>47.155949</td>
+      <td>37.856534</td>
+      <td>57.156578</td>
+      <td>...</td>
+      <td>47.806687</td>
+      <td>46.909740</td>
+      <td>32.783804</td>
+      <td>49.979809</td>
+      <td>34.794183</td>
+      <td>40.932294</td>
+      <td>53.618109</td>
+      <td>46.638917</td>
+      <td>47.715370</td>
+      <td>22.199250</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>3577</th>
+      <td>46.919133</td>
+      <td>46.765478</td>
+      <td>51.150679</td>
+      <td>42.750231</td>
+      <td>49.449106</td>
+      <td>51.989018</td>
+      <td>32.597605</td>
+      <td>43.849780</td>
+      <td>47.833537</td>
+      <td>39.578175</td>
+      <td>...</td>
+      <td>24.917959</td>
+      <td>36.331291</td>
+      <td>46.715895</td>
+      <td>42.166525</td>
+      <td>44.962159</td>
+      <td>45.163310</td>
+      <td>41.930947</td>
+      <td>42.661861</td>
+      <td>33.012213</td>
+      <td>50.092056</td>
+    </tr>
+    <tr>
+      <th>3578</th>
+      <td>47.290969</td>
+      <td>46.446540</td>
+      <td>52.547933</td>
+      <td>41.966591</td>
+      <td>48.338859</td>
+      <td>51.043864</td>
+      <td>29.589466</td>
+      <td>45.947603</td>
+      <td>47.185385</td>
+      <td>41.416932</td>
+      <td>...</td>
+      <td>25.853045</td>
+      <td>41.150591</td>
+      <td>46.721835</td>
+      <td>42.480450</td>
+      <td>45.848125</td>
+      <td>46.424821</td>
+      <td>43.050711</td>
+      <td>43.155771</td>
+      <td>30.219649</td>
+      <td>50.473456</td>
+    </tr>
+    <tr>
+      <th>3579</th>
+      <td>30.910078</td>
+      <td>56.796213</td>
+      <td>53.676871</td>
+      <td>43.537100</td>
+      <td>48.571039</td>
+      <td>50.366663</td>
+      <td>48.056857</td>
+      <td>38.580897</td>
+      <td>47.209050</td>
+      <td>9.944823</td>
+      <td>...</td>
+      <td>41.886535</td>
+      <td>33.476275</td>
+      <td>49.285624</td>
+      <td>32.852784</td>
+      <td>49.330139</td>
+      <td>41.213599</td>
+      <td>37.312409</td>
+      <td>45.346724</td>
+      <td>43.464060</td>
+      <td>54.690024</td>
+    </tr>
+    <tr>
+      <th>3580</th>
+      <td>49.808545</td>
+      <td>37.031432</td>
+      <td>41.234293</td>
+      <td>37.913667</td>
+      <td>38.738186</td>
+      <td>24.698258</td>
+      <td>43.717791</td>
+      <td>49.216430</td>
+      <td>41.037846</td>
+      <td>49.819356</td>
+      <td>...</td>
+      <td>47.958613</td>
+      <td>51.547784</td>
+      <td>39.629474</td>
+      <td>40.324372</td>
+      <td>42.509035</td>
+      <td>54.469956</td>
+      <td>39.716742</td>
+      <td>40.802395</td>
+      <td>43.870367</td>
+      <td>33.544740</td>
+    </tr>
+    <tr>
+      <th>3581</th>
+      <td>44.863628</td>
+      <td>34.147360</td>
+      <td>26.426442</td>
+      <td>49.513390</td>
+      <td>35.537932</td>
+      <td>41.776087</td>
+      <td>45.692591</td>
+      <td>33.223776</td>
+      <td>37.021852</td>
+      <td>53.224208</td>
+      <td>...</td>
+      <td>43.597149</td>
+      <td>43.600393</td>
+      <td>31.563693</td>
+      <td>46.682163</td>
+      <td>42.242550</td>
+      <td>36.928225</td>
+      <td>44.120369</td>
+      <td>48.673317</td>
+      <td>43.895589</td>
+      <td>35.696775</td>
+    </tr>
+  </tbody>
+</table>
+<p>3582 rows × 896 columns</p>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[34]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Create LR model with Lasso Penalty</span>
@@ -16511,10 +16842,10 @@ Runtime For KNN with L2-norm: 0.498 seconds
 </div>
 </div>
 
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[35]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 10-fold Cross-Validation with distance matrix as input and Binomial Deviance as the loss function</span>
@@ -16530,10 +16861,52 @@ Runtime For KNN with L2-norm: 0.498 seconds
 </div>
 </div>
 
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>Fitting 10 folds for each of 10 candidates, totalling 100 fits
+</pre>
+</div>
+</div>
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[35]:</div>
+
+
+
+
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
+<pre>GridSearchCV(cv=10,
+             estimator=LogisticRegression(max_iter=100000, penalty=&#39;l1&#39;,
+                                          solver=&#39;liblinear&#39;),
+             n_jobs=-1,
+             param_grid={&#39;C&#39;: [0.0001, 0.001, 0.05, 0.01, 0.5, 0.1, 1, 5, 10,
+                               100]},
+             scoring=make_scorer(log_loss, greater_is_better=False, needs_proba=True),
+             verbose=2)</pre>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[36]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">lr_lasso_dist_cv_model</span><span class="o">.</span><span class="n">best_params_</span>
@@ -16544,6 +16917,29 @@ Runtime For KNN with L2-norm: 0.498 seconds
 </div>
 </div>
 
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[36]:</div>
+
+
+
+
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
+<pre>{&#39;C&#39;: 10}</pre>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
@@ -16552,7 +16948,7 @@ Runtime For KNN with L2-norm: 0.498 seconds
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[37]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Get prediction probabilities of the test data and convert them to binary predictions by using the Class3 ratio as threshold.</span>
@@ -16567,10 +16963,10 @@ Runtime For KNN with L2-norm: 0.498 seconds
 </div>
 </div>
 
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[38]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">confusion_lr_lasso_dist</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;Actual&quot;</span><span class="p">:</span><span class="n">y_test_class3</span><span class="p">,</span> <span class="s2">&quot;Predicted&quot;</span><span class="p">:</span><span class="n">y_pred_lr_lasso_dist</span><span class="p">})</span>
@@ -16584,10 +16980,84 @@ Runtime For KNN with L2-norm: 0.498 seconds
 </div>
 </div>
 
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>Confusion Matrix For Logistic Regression w/Lasso on Class3
+</pre>
+</div>
+</div>
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[38]:</div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Predicted</th>
+      <th>0</th>
+      <th>1</th>
+    </tr>
+    <tr>
+      <th>Actual</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>3101</td>
+      <td>27</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>25</td>
+      <td>429</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[39]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Calculate the accuracy for the LR with distance as input</span>
@@ -16600,15 +17070,38 @@ Runtime For KNN with L2-norm: 0.498 seconds
 </div>
 </div>
 
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[39]:</div>
+
+
+
+
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
+<pre>0.9854829704075935</pre>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h3 id="Accuracy-for-the-LR-with-distance-matrix-as-input-and-L1-penalization-is-0.9855">Accuracy for the LR with distance matrix as input and L1 penalization is 0.9855<a class="anchor-link" href="#Accuracy-for-the-LR-with-distance-matrix-as-input-and-L1-penalization-is-0.9855">&#182;</a></h3>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[40]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Print the coefficients of the LR with Lasso penalty, ones that have positive values.</span>
@@ -16621,15 +17114,106 @@ Runtime For KNN with L2-norm: 0.498 seconds
 </div>
 </div>
 
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[40]:</div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Coef</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>0.014404</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.016468</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>0.000073</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>0.001094</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>0.000066</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>885</th>
+      <td>0.017845</td>
+    </tr>
+    <tr>
+      <th>889</th>
+      <td>0.011831</td>
+    </tr>
+    <tr>
+      <th>890</th>
+      <td>0.120692</td>
+    </tr>
+    <tr>
+      <th>894</th>
+      <td>0.006473</td>
+    </tr>
+    <tr>
+      <th>895</th>
+      <td>0.011834</td>
+    </tr>
+  </tbody>
+</table>
+<p>389 rows × 1 columns</p>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h3 id="Regression-coefficients-are-the-scalers-for-the-distances-between-the-test-instance-and-the-corresponding-training-instances.-For-example,-if-we-choose-a-point-from-the-test-data-that-belongs-to-the-class-3-(such-as-the-12th-point),-and-multiply-its-distances-(from-the-training-data-instances)-with-regression-coefficients,-sum-these-multiplications-and-transform-the-result-with-the-logit-function,-we-should-get-a-probability-that-is-close-to-1,-because-class-3-is-our-target-class-(and-model-has-an-almost-perfect-accuracy).">Regression coefficients are the scalers for the distances between the test instance and the corresponding training instances. For example, if we choose a point from the test data that belongs to the class 3 (such as the 12th point), and multiply its distances (from the training data instances) with regression coefficients, sum these multiplications and transform the result with the logit function, we should get a probability that is close to 1, because class 3 is our target class (and model has an almost perfect accuracy).<a class="anchor-link" href="#Regression-coefficients-are-the-scalers-for-the-distances-between-the-test-instance-and-the-corresponding-training-instances.-For-example,-if-we-choose-a-point-from-the-test-data-that-belongs-to-the-class-3-(such-as-the-12th-point),-and-multiply-its-distances-(from-the-training-data-instances)-with-regression-coefficients,-sum-these-multiplications-and-transform-the-result-with-the-logit-function,-we-should-get-a-probability-that-is-close-to-1,-because-class-3-is-our-target-class-(and-model-has-an-almost-perfect-accuracy).">&#182;</a></h3>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[41]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Test points that belongs to class 3. (We pick the 12th point for demonstration)</span>
@@ -16641,10 +17225,44 @@ Runtime For KNN with L2-norm: 0.498 seconds
 </div>
 </div>
 
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[41]:</div>
+
+
+
+
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
+<pre>12    3
+19    3
+24    3
+28    3
+50    3
+56    3
+59    3
+63    3
+67    3
+98    3
+Name: class, dtype: category
+Categories (8, int64): [1, 2, 3, 4, 5, 6, 7, 8]</pre>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[42]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="n">lr_lasso_dist_coefs</span><span class="p">[</span><span class="s2">&quot;Coef&quot;</span><span class="p">]</span><span class="o">*</span><span class="n">X_test_dist</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">12</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
@@ -16654,6 +17272,29 @@ Runtime For KNN with L2-norm: 0.498 seconds
      </div>
 </div>
 </div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[42]:</div>
+
+
+
+
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
+<pre>0.9873385506267792</pre>
+</div>
+
+</div>
+
+</div>
+
 </div>
 
 </div>
@@ -16679,7 +17320,7 @@ Runtime For KNN with L2-norm: 0.498 seconds
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[43]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># This line is used to create html version of the notebook.</span>
